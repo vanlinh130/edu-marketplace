@@ -1,5 +1,5 @@
-import Footer from "../components/footer";
-import Header from "../components/header";
+import Footer from "../../components/footer";
+import Header from "../../components/header";
 
 export default function DashboardLayout({
   children,
@@ -7,7 +7,7 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="min-h-screen flex justify-center">
+    <div className="min-h-screen flex justify-center" >
       <div className="w-full">
         <Header />
         {children}
