@@ -79,7 +79,7 @@ const Footer = () => {
                   })}
                 </ul>
               </div>
-              <div className="p-2.5 col-span-2  flex flex-col">
+              <div className="p-2.5 col-span-1 md:col-span-2 lg:col-span-2  flex flex-col">
                 <div className="text-[22px] font-bold text-[#fff]">
                   <p>LƯU Ý QUAN TRỌNG</p>
                 </div>
