@@ -60,7 +60,7 @@ export default function Home() {
                           return (
                             <li
                               key={index}
-                              className="col-span-1 bg-[#fff] rounded-[10px] flex border-[1px] border-[#eee] border-solid hover:shadow"
+                              className="col-span-1 bg-[#fff] rounded-[10px] flex border-[1px] border-[#eee] border-solid hover:shadow-2xl"
                             >
                               <div className="flex flex-col">
                                 <div className="relative">
