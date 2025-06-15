@@ -1,0 +1,310 @@
+[
+  {
+    "id": 1,
+    "title": "Trò chơi Xé túi mù PowerPoint",
+    "slug": "tro-choi-xe-tui-mu-powerpoiont",
+    "description": "Có 8 túi mù. Mỗi túi mù là một bất ngờ! Trò chơi giúp các bạn học sinh ôn bài, thi đua nhóm và học tập đầy hứng thú ngay trên PowerPoint",
+    "price": 89000,
+    "discountPrice": 59000,
+    "thumbnailUrl": "https://debyquynh.com/wp-content/uploads/2025/05/Game-xe-tui-mu-PP-600x338.png",
+    "images": [
+      "https://debyquynh.com/wp-content/uploads/2025/05/template01.jpg",
+      "https://debyquynh.com/wp-content/uploads/2025/05/template02.jpg"
+    ],
+    "categoryId": "f1cd7f8e-cbcc-434f-9238-6e4c3a40bb25",
+    "categoryName": "PowerPoint",
+    "tags": ["thuyết trình", "ppt", "giới thiệu bản thân"],
+    "type": "presentation",
+    "author": "Deby Quỳnh",
+    "downloadLink": null,
+    "previewUrl": "https://debyquynh.com/xem-truoc/template01",
+    "isFree": false,
+    "isFeatured": true,
+    "downloadsCount": 150,
+    "viewsCount": 750,
+    "rating": {
+      "average": 4.8,
+      "count": 25
+    }
+  },
+  {
+    "id": 2,
+    "title": "Trò chơi Thử tài tinh mắt PowerPoint",
+    "slug": "game-thu-tai-tinh-mat-powerpoint",
+    "description": "Trò chơi quan sát giúp bé luyện mắt tinh – nhìn nhanh, nhớ giỏi, chơi là mê",
+    "price": 35000,
+    "discountPrice": 59000,
+    "thumbnailUrl": "https://debyquynh.com/wp-content/uploads/2025/05/Game-Thu-tai-tinh-mat-600x338.png",
+    "images": [
+      "https://debyquynh.com/wp-content/uploads/2025/05/template01.jpg",
+      "https://debyquynh.com/wp-content/uploads/2025/05/template02.jpg"
+    ],
+    "categoryId": "f1cd7f8e-cbcc-434f-9238-6e4c3a40bb25",
+    "categoryName": "PowerPoint",
+    "tags": ["thuyết trình", "ppt", "giới thiệu bản thân"],
+    "type": "presentation",
+    "author": "Deby Quỳnh",
+    "downloadLink": null,
+    "previewUrl": "https://debyquynh.com/xem-truoc/template01",
+    "isFree": false,
+    "isFeatured": true,
+    "downloadsCount": 150,
+    "viewsCount": 750,
+    "rating": {
+      "average": 4.8,
+      "count": 25
+    }
+  },
+  {
+    "id": 3,
+    "title": "Trò chơi Hái quả PowerPoint",
+    "slug": "game-hai-qua-powerpoint",
+    "description": "Hái trái xinh xinh, mở câu hỏi thông minh – game PowerPoint đáng yêu cho bé học cực vui",
+    "price": 35000,
+    "discountPrice": 59000,
+    "thumbnailUrl": "https://debyquynh.com/wp-content/uploads/2025/05/Game-Hai-qua-PPT-600x338.png",
+    "images": [
+      "https://debyquynh.com/wp-content/uploads/2025/05/template01.jpg",
+      "https://debyquynh.com/wp-content/uploads/2025/05/template02.jpg"
+    ],
+    "categoryId": "f1cd7f8e-cbcc-434f-9238-6e4c3a40bb25",
+    "categoryName": "PowerPoint",
+    "tags": ["thuyết trình", "ppt", "giới thiệu bản thân"],
+    "type": "presentation",
+    "author": "Deby Quỳnh",
+    "downloadLink": null,
+    "previewUrl": "https://debyquynh.com/xem-truoc/template01",
+    "isFree": false,
+    "isFeatured": true,
+    "downloadsCount": 150,
+    "viewsCount": 750,
+    "rating": {
+      "average": 4.8,
+      "count": 25
+    }
+  },
+  {
+    "id": 4,
+    "title": "Trò chơi Hộp mù Baby Three PowerPoint",
+    "slug": "game-baby-three-powerpoint",
+    "description": "Mỗi hộp mù là một bất ngờ – chơi học đều vui, chỉ với PowerPoint",
+    "price": 35000,
+    "discountPrice": 59000,
+    "thumbnailUrl": "https://debyquynh.com/wp-content/uploads/2025/05/Game-Baby-three-PPT-600x338.png",
+    "images": [
+      "https://debyquynh.com/wp-content/uploads/2025/05/template01.jpg",
+      "https://debyquynh.com/wp-content/uploads/2025/05/template02.jpg"
+    ],
+    "categoryId": "f1cd7f8e-cbcc-434f-9238-6e4c3a40bb25",
+    "categoryName": "PowerPoint",
+    "tags": ["thuyết trình", "ppt", "giới thiệu bản thân"],
+    "type": "presentation",
+    "author": "Deby Quỳnh",
+    "downloadLink": null,
+    "previewUrl": "https://debyquynh.com/xem-truoc/template01",
+    "isFree": false,
+    "isFeatured": true,
+    "downloadsCount": 150,
+    "viewsCount": 750,
+    "rating": {
+      "average": 4.8,
+      "count": 25
+    }
+  },
+  {
+    "id": 5,
+    "title": "Cách làm trò chơi Truy tìm chữ cái trên Canva | Cách làm trò chơi trên Canva cho trẻ mầm non",
+    "slug": "game-baby-three-powerpoint",
+    "description": "Cách làm trò chơi Truy tìm chữ cái trên Canva | Cách làm trò chơi trên Canva cho trẻ mầm non",
+    "price": 35000,
+    "discountPrice": 59000,
+    "thumbnailUrl": "https://debyquynh.com/wp-content/uploads/2025/05/Game-truy-tim-chu-cai-624x351.png",
+    "images": [
+      "https://debyquynh.com/wp-content/uploads/2025/05/template01.jpg",
+      "https://debyquynh.com/wp-content/uploads/2025/05/template02.jpg"
+    ],
+    "categoryId": "f1cd7f8e-cbcc-434f-9238-6e4c3a40bb25",
+    "categoryName": "PowerPoint",
+    "tags": ["thuyết trình", "ppt", "giới thiệu bản thân"],
+    "type": "presentation",
+    "author": "Deby Quỳnh",
+    "downloadLink": null,
+    "previewUrl": "https://debyquynh.com/xem-truoc/template01",
+    "isFree": true,
+    "isFeatured": true,
+    "downloadsCount": 150,
+    "viewsCount": 750,
+    "rating": {
+      "average": 4.8,
+      "count": 25
+    }
+  },
+  {
+    "id": 6,
+    "title": "Tạo nhân vật hoạt hình nói chuyện bằng AI (miễn phí) | Biến ảnh tĩnh thành video sinh động cực dễ",
+    "slug": "game-baby-three-powerpoint",
+    "description": "Cách làm trò chơi Truy tìm chữ cái trên Canva | Cách làm trò chơi trên Canva cho trẻ mầm non",
+    "price": 35000,
+    "discountPrice": 59000,
+    "thumbnailUrl": "https://debyquynh.com/wp-content/uploads/2025/05/Tao-nhan-vat-AI-noi-chuyen-624x351.png",
+    "images": [
+      "https://debyquynh.com/wp-content/uploads/2025/05/template01.jpg",
+      "https://debyquynh.com/wp-content/uploads/2025/05/template02.jpg"
+    ],
+    "categoryId": "f1cd7f8e-cbcc-434f-9238-6e4c3a40bb25",
+    "categoryName": "PowerPoint",
+    "tags": ["thuyết trình", "ppt", "giới thiệu bản thân"],
+    "type": "presentation",
+    "author": "Deby Quỳnh",
+    "downloadLink": null,
+    "previewUrl": "https://debyquynh.com/xem-truoc/template01",
+    "isFree": true,
+    "isFeatured": true,
+    "downloadsCount": 150,
+    "viewsCount": 750,
+    "rating": {
+      "average": 4.8,
+      "count": 25
+    }
+  },
+  {
+    "id": 7,
+    "title": "Cách làm trò chơi hộp mù Baby Three trên Canva | Trò chơi tương tác Canva",
+    "slug": "game-baby-three-powerpoint",
+    "description": "Cách làm trò chơi Truy tìm chữ cái trên Canva | Cách làm trò chơi trên Canva cho trẻ mầm non",
+    "price": 35000,
+    "discountPrice": 59000,
+    "thumbnailUrl": "https://debyquynh.com/wp-content/uploads/2025/05/Game-Baby-three-Canva-624x351.png",
+    "images": [
+      "https://debyquynh.com/wp-content/uploads/2025/05/template01.jpg",
+      "https://debyquynh.com/wp-content/uploads/2025/05/template02.jpg"
+    ],
+    "categoryId": "f1cd7f8e-cbcc-434f-9238-6e4c3a40bb25",
+    "categoryName": "PowerPoint",
+    "tags": ["thuyết trình", "ppt", "giới thiệu bản thân"],
+    "type": "presentation",
+    "author": "Deby Quỳnh",
+    "downloadLink": null,
+    "previewUrl": "https://debyquynh.com/xem-truoc/template01",
+    "isFree": true,
+    "isFeatured": true,
+    "downloadsCount": 150,
+    "viewsCount": 750,
+    "rating": {
+      "average": 4.8,
+      "count": 25
+    }
+  },
+  {
+    "id": 8,
+    "title": "Cách làm đồng hồ đếm ngược trong PowerPoint có âm thanh | Làm kim đồng hồ quay trong PowerPointa",
+    "slug": "game-baby-three-powerpoint",
+    "description": "Cách làm trò chơi Truy tìm chữ cái trên Canva | Cách làm trò chơi trên Canva cho trẻ mầm non",
+    "price": 35000,
+    "discountPrice": 59000,
+    "thumbnailUrl": "https://debyquynh.com/wp-content/uploads/2025/05/Dong-ho-dem-nguoc-ppt-2-624x351.png",
+    "images": [
+      "https://debyquynh.com/wp-content/uploads/2025/05/template01.jpg",
+      "https://debyquynh.com/wp-content/uploads/2025/05/template02.jpg"
+    ],
+    "categoryId": "f1cd7f8e-cbcc-434f-9238-6e4c3a40bb25",
+    "categoryName": "PowerPoint",
+    "tags": ["thuyết trình", "ppt", "giới thiệu bản thân"],
+    "type": "presentation",
+    "author": "Deby Quỳnh",
+    "downloadLink": null,
+    "previewUrl": "https://debyquynh.com/xem-truoc/template01",
+    "isFree": true,
+    "isFeatured": true,
+    "downloadsCount": 150,
+    "viewsCount": 750,
+    "rating": {
+      "average": 4.8,
+      "count": 25
+    }
+  },
+  {
+    "id": 8,
+    "title": "Cách làm đồng hồ đếm ngược trong PowerPoint có kèm âm thanh",
+    "slug": "game-baby-three-powerpoint",
+    "description": "Cách làm trò chơi Truy tìm chữ cái trên Canva | Cách làm trò chơi trên Canva cho trẻ mầm non",
+    "price": 35000,
+    "discountPrice": 59000,
+    "thumbnailUrl": "https://debyquynh.com/wp-content/uploads/2025/05/Dong-ho-dem-nguoc-ppt-1-624x351.png",
+    "images": [
+      "https://debyquynh.com/wp-content/uploads/2025/05/template01.jpg",
+      "https://debyquynh.com/wp-content/uploads/2025/05/template02.jpg"
+    ],
+    "categoryId": "f1cd7f8e-cbcc-434f-9238-6e4c3a40bb25",
+    "categoryName": "PowerPoint",
+    "tags": ["thuyết trình", "ppt", "giới thiệu bản thân"],
+    "type": "presentation",
+    "author": "Deby Quỳnh",
+    "downloadLink": null,
+    "previewUrl": "https://debyquynh.com/xem-truoc/template01",
+    "isFree": true,
+    "isFeatured": true,
+    "downloadsCount": 150,
+    "viewsCount": 750,
+    "rating": {
+      "average": 4.8,
+      "count": 25
+    }
+  },
+  {
+    "id": 9,
+    "title": "Cách làm trò chơi Ô chữ bí mật trên PowerPoint | Hướng dẫn tạo trò chơi ô chữ dễ dàng",
+    "slug": "game-baby-three-powerpoint",
+    "description": "Cách làm trò chơi Truy tìm chữ cái trên Canva | Cách làm trò chơi trên Canva cho trẻ mầm non",
+    "price": 35000,
+    "discountPrice": 59000,
+    "thumbnailUrl": "https://debyquynh.com/wp-content/uploads/2025/05/Game-O-chu-bi-mat-1-624x351.png",
+    "images": [
+      "https://debyquynh.com/wp-content/uploads/2025/05/template01.jpg",
+      "https://debyquynh.com/wp-content/uploads/2025/05/template02.jpg"
+    ],
+    "categoryId": "f1cd7f8e-cbcc-434f-9238-6e4c3a40bb25",
+    "categoryName": "PowerPoint",
+    "tags": ["thuyết trình", "ppt", "giới thiệu bản thân"],
+    "type": "presentation",
+    "author": "Deby Quỳnh",
+    "downloadLink": null,
+    "previewUrl": "https://debyquynh.com/xem-truoc/template01",
+    "isFree": true,
+    "isFeatured": true,
+    "downloadsCount": 150,
+    "viewsCount": 750,
+    "rating": {
+      "average": 4.8,
+      "count": 25
+    }
+  },
+  {
+    "id": 10,
+    "title": "Cách làm trò chơi Đoán bóng con vật trên PowerPoint cho trẻ mầm non",
+    "slug": "game-baby-three-powerpoint",
+    "description": "Cách làm trò chơi Truy tìm chữ cái trên Canva | Cách làm trò chơi trên Canva cho trẻ mầm non",
+    "price": 35000,
+    "discountPrice": 59000,
+    "thumbnailUrl": "https://debyquynh.com/wp-content/uploads/2025/05/Game-doan-bong-con-vat-PPT-624x351.png",
+    "images": [
+      "https://debyquynh.com/wp-content/uploads/2025/05/template01.jpg",
+      "https://debyquynh.com/wp-content/uploads/2025/05/template02.jpg"
+    ],
+    "categoryId": "f1cd7f8e-cbcc-434f-9238-6e4c3a40bb25",
+    "categoryName": "PowerPoint",
+    "tags": ["thuyết trình", "ppt", "giới thiệu bản thân"],
+    "type": "presentation",
+    "author": "Deby Quỳnh",
+    "downloadLink": null,
+    "previewUrl": "https://debyquynh.com/xem-truoc/template01",
+    "isFree": true,
+    "isFeatured": true,
+    "downloadsCount": 150,
+    "viewsCount": 750,
+    "rating": {
+      "average": 4.8,
+      "count": 25
+    }
+  }
+]
