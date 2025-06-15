@@ -50,18 +50,18 @@ const Header = () => {
     if (animation === "animate-slide-out") {
       const timer = setTimeout(() => {
         setIsMenuOpen(false);
-      }, 300); 
+      }, 300);
       return () => clearTimeout(timer);
     }
   }, [animation]);
 
   const handleOpen = () => {
-    setIsMenuOpen(!isMenuOpen) 
+    setIsMenuOpen(!isMenuOpen);
     openMenu();
   };
 
   const handleClose = () => {
-    closeMenu(); 
+    closeMenu();
   };
 
   const navItemsPc = [
@@ -89,6 +89,8 @@ const Header = () => {
       icon: FiUserCheck,
     },
   ];
+
+  const cart = false;
 
   return (
     <div className="fixed z-[612] w-full transition-all duration-200 shadow bg-[#ffffff] ">
@@ -164,11 +166,15 @@ const Header = () => {
                           className="relative inline-flex items-center justify-center"
                         >
                           <BsCart3 className="text-[24px] text-[#1E2132]" />
-                          <div className="absolute top-0 right-[-4px] px-[6px] py-[1px] bg-[#385DFF] font-semibold rounded-full shadow text-[9px] leading-[1.6]">
-                            <span className="text-[#FAFBFD] font-semibold">
-                              0
-                            </span>
-                          </div>
+                          {cart ? (
+                            <div className="absolute top-0 right-[-4px] px-[6px] py-[1px] bg-[#385DFF] font-semibold rounded-full shadow text-[9px] leading-[1.6]">
+                              <span className="text-[#FAFBFD] font-semibold">
+                                0
+                              </span>
+                            </div>
+                          ) : (
+                            ""
+                          )}
                         </Link>
                       </TooltipTrigger>
                     </DropdownMenuTrigger>
@@ -181,48 +187,54 @@ const Header = () => {
                     <h2 className="font-semibold text-[#1E2132] text-[24px] mb-[27px]">
                       Giỏ hàng
                     </h2>
-                    <Link
-                      href={CommonConstants.GIO_HANG_PATH}
-                      className="text-[14px] text-[#385DFF] font-medium"
-                    >
-                      Xem giỏ hàng
-                    </Link>
                   </DropdownMenuLabel>
-                  <div className="">
-                    <DropdownMenuItem className="py-[15px] px-5 flex items-center justify-between gap-">
-                      <div className="">
-                        <Link
-                          href=""
-                          className="flex items-center justify-center"
-                        >
-                          <Image
-                            src="/images/game/Game-Baby-three-PPT.png"
-                            alt=""
-                            height={36}
-                            width={36}
-                            className="rounded-[50%] "
-                          />
-                        </Link>
-                      </div>
-                      <div className="">
-                        <Link href="" className="text-[14px] text-[#1E2132]">
-                          Trò chơi Hộp mù Baby Three PowerPoint
-                        </Link>
-                      </div>
-                      <div className="">
-                        <span className="text-[13px] text-[#9B9C9F]">
-                          <span>1 x 70.000 ₫</span>
-                        </span>
-                      </div>
-                    </DropdownMenuItem>
-                    <DropdownMenuSeparator />
-                    <DropdownMenuItem>
-                      <div className="my-[15px] ml-[20px] text-[14px] text-[#9B9C9F]">
-                        <strong className="font-normal">Tạm tính:</strong>
-                        <span> 70.000 ₫</span>
-                      </div>
-                    </DropdownMenuItem>
-                  </div>
+                  {cart ? (
+                    <div>
+                      <Link
+                        href={CommonConstants.GIO_HANG_PATH}
+                        className="text-[14px] text-[#385DFF] font-medium px-5"
+                      >
+                        Xem giỏ hàng
+                      </Link>
+                      <DropdownMenuItem className="py-[15px] px-5 flex items-center justify-between gap-">
+                        <div className="">
+                          <Link
+                            href=""
+                            className="flex items-center justify-center"
+                          >
+                            <Image
+                              src="/images/game/Game-Baby-three-PPT.png"
+                              alt=""
+                              height={36}
+                              width={36}
+                              className="rounded-[50%] "
+                            />
+                          </Link>
+                        </div>
+                        <div className="">
+                          <Link href="" className="text-[14px] text-[#1E2132]">
+                            Trò chơi Hộp mù Baby Three PowerPoint
+                          </Link>
+                        </div>
+                        <div className="">
+                          <span className="text-[13px] text-[#9B9C9F]">
+                            <span>1 x 70.000 ₫</span>
+                          </span>
+                        </div>
+                      </DropdownMenuItem>
+                      <DropdownMenuSeparator />
+                      <DropdownMenuItem>
+                        <div className="my-[15px] ml-[20px] text-[14px] text-[#9B9C9F]">
+                          <strong className="font-normal">Tạm tính:</strong>
+                          <span> 70.000 ₫</span>
+                        </div>
+                      </DropdownMenuItem>
+                    </div>
+                  ) : (
+                    <div className="bg-[#F2F4F5] mx-2.5 mb-[15px] rounded-[6px] font-semibold text-[16px] text-[#7A7A7A]">
+                      No products in the cart
+                    </div>
+                  )}
                 </DropdownMenuContent>
               </DropdownMenu>
             </div>
@@ -242,7 +254,9 @@ const Header = () => {
 
       {/* bb-mobile-panel-wrapper */}
       {isMenuOpen && (
-        <div className={`bg-[#fff] w-full fixed top-0 h-full overflow-y-auto z-[999] block md:hidden lg:hidden animate-slide-in  ${animation}`}>
+        <div
+          className={`bg-[#fff] w-full fixed top-0 h-full overflow-y-auto z-[999] block md:hidden lg:hidden animate-slide-in  ${animation}`}
+        >
           <div className="relative flex flex-col min-h-full pb-[30px] z-[11]">
             <div className="shadow flex items-center justify-between z-[199] px-5 py-[15px]">
               <Link href="/" className="">
@@ -268,9 +282,13 @@ const Header = () => {
                     <li key={item.href} onClick={() => setIsMenuOpen(false)}>
                       <Link
                         href={item.href}
-                        className={`flex items-center gap-2 w-full py-[12px] pl-[15px] rounded-[8px] ${isActive ? "bg-[#385DFF] text-[#fff]" : "text-[#1E2132]"}`}
+                        className={`flex items-center gap-2 w-full py-[12px] pl-[15px] rounded-[8px] ${
+                          isActive
+                            ? "bg-[#385DFF] text-[#fff]"
+                            : "text-[#1E2132]"
+                        }`}
                       >
-                        <Icon  className="text-[24px]"/>
+                        <Icon className="text-[24px]" />
                         <span className="text-[14px]">{item.label}</span>
                       </Link>
                     </li>
