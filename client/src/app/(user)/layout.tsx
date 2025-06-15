@@ -1,5 +1,7 @@
 import Footer from "../../components/footer";
 import Header from "../../components/header";
+import CartToggler from "./components/CartToggler";
+import FloatContact from "./components/FloatContact";
 
 export default function DashboardLayout({
   children,
@@ -14,6 +16,8 @@ export default function DashboardLayout({
           {children}
         </div>
         <Footer />
+        <CartToggler/>
+        <FloatContact/>
       </div>
     </div>
   );
