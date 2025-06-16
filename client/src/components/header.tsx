@@ -29,8 +29,19 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import Search from "./search";
+import { googleLogout } from "@react-oauth/google";
+import { useLogoutMutation } from "@/queries/useAuth";
+import { toast } from "react-toastify";
+
+interface User {
+  name: string;
+  picture: string;
+}
 
 const Header = () => {
+  const [user, setUser] = useState<User | null>(null);
+  const logoutMutation = useLogoutMutation();
+
   const [showSearch, setShowSearch] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const pathname = usePathname();
@@ -64,6 +75,29 @@ const Header = () => {
     closeMenu();
   };
 
+  const cart = false;
+
+  useEffect(() => {
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
+    }
+  }, []);
+
+  console.log(user, "user");
+
+  const handleLogout = async () => {
+    try {
+      googleLogout();
+      localStorage.removeItem("user");
+      setUser(null);
+      await logoutMutation.mutateAsync();
+      toast.success("Đã đăng xuất thành công!");
+    } catch (err) {
+      console.error("Logout error:", err);
+    }
+  };
+
   const navItemsPc = [
     {
       href: CommonConstants.BAI_VIET_PATH,
@@ -84,13 +118,22 @@ const Header = () => {
       activeIcon: FaStar,
     },
     {
-      href: CommonConstants.LOGIN_PATH,
-      label: "Đăng nhập",
-      icon: FiUserCheck,
+      href: user ? "#" : CommonConstants.LOGIN_PATH,
+      label: user ? user.name : "Đăng nhập",
+      icon: user
+        ? () => (
+            <Image
+              src={user.picture || ""}
+              alt={user.name}
+              width={24}
+              height={24}
+              className="rounded-full object-cover"
+            />
+          )
+        : FiUserCheck,
+      onClick: user ? handleLogout : undefined,
     },
   ];
-
-  const cart = false;
 
   return (
     <div className="fixed z-[612] w-full transition-all duration-200 shadow bg-[#ffffff] ">
@@ -129,13 +172,27 @@ const Header = () => {
                          : "font-normal"
                      }`}
                   >
-                    <Link
-                      href={item.href}
-                      className="flex items-center gap-2 px-2.5 py-2 hover:bg-[#F2F4F5] rounded-[8px]"
-                    >
-                      {Icon && <Icon className="text-[24px] text-[#1E2132]" />}
-                      <span className="text-[14px]">{item.label}</span>
-                    </Link>
+                    {item.onClick ? (
+                      <div
+                        onClick={item.onClick}
+                        className="flex items-center gap-2 px-2.5 py-2 hover:bg-[#F2F4F5] rounded-[8px] cursor-pointer"
+                      >
+                        {Icon && (
+                          <Icon className="text-[24px] text-[#1E2132]" />
+                        )}
+                        <span className="text-[14px]">{item.label}</span>
+                      </div>
+                    ) : (
+                      <Link
+                        href={item.href}
+                        className="flex items-center gap-2 px-2.5 py-2 hover:bg-[#F2F4F5] rounded-[8px]"
+                      >
+                        {Icon && (
+                          <Icon className="text-[24px] text-[#1E2132]" />
+                        )}
+                        <span className="text-[14px]">{item.label}</span>
+                      </Link>
+                    )}
                   </li>
                 );
               })}
@@ -239,12 +296,27 @@ const Header = () => {
               </DropdownMenu>
             </div>
             <div className="hidden md:block lg:block items-center py-1.5 px-3">
-              <Link
-                href={CommonConstants.LOGIN_PATH}
-                className="text-[14px] font-semibold text-[#1E2132] hover:text-[#D67083]"
-              >
-                Đăng nhập
-              </Link>
+              {user ? (
+                <div
+                  className="rounded-full overflow-hidden cursor-pointer"
+                  onClick={handleLogout}
+                >
+                  <Image
+                    src={user?.picture || ""}
+                    alt="avatar"
+                    width={32}
+                    height={32}
+                    className="object-cover"
+                  />
+                </div>
+              ) : (
+                <Link
+                  href={CommonConstants.LOGIN_PATH}
+                  className="text-[14px] font-semibold text-[#1E2132] hover:text-[#D67083]"
+                >
+                  Đăng nhập
+                </Link>
+              )}
             </div>
           </div>
         </div>
@@ -280,17 +352,31 @@ const Header = () => {
                   const Icon = item.icon;
                   return (
                     <li key={item.href} onClick={() => setIsMenuOpen(false)}>
-                      <Link
-                        href={item.href}
-                        className={`flex items-center gap-2 w-full py-[12px] pl-[15px] rounded-[8px] ${
-                          isActive
-                            ? "bg-[#385DFF] text-[#fff]"
-                            : "text-[#1E2132]"
-                        }`}
-                      >
-                        <Icon className="text-[24px]" />
-                        <span className="text-[14px]">{item.label}</span>
-                      </Link>
+                      {item.onClick ? (
+                        <div
+                          onClick={item.onClick}
+                          className={`flex items-center gap-2 w-full py-[12px] pl-[15px] rounded-[8px] cursor-pointer ${
+                            isActive
+                              ? "bg-[#385DFF] text-[#fff]"
+                              : "text-[#1E2132]"
+                          }`}
+                        >
+                          <Icon className="text-[24px]" />
+                          <span className="text-[14px]">{item.label}</span>
+                        </div>
+                      ) : (
+                        <Link
+                          href={item.href}
+                          className={`flex items-center gap-2 w-full py-[12px] pl-[15px] rounded-[8px] ${
+                            isActive
+                              ? "bg-[#385DFF] text-[#fff]"
+                              : "text-[#1E2132]"
+                          }`}
+                        >
+                          <Icon className="text-[24px]" />
+                          <span className="text-[14px]">{item.label}</span>
+                        </Link>
+                      )}
                     </li>
                   );
                 })}
