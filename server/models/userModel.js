@@ -27,7 +27,6 @@ const getAllUsers = async () => {
   return result.rows;
 };
 
-
 module.exports = {
   createUser,
   findUserByGoogleIdDetail,
