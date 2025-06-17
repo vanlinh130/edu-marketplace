@@ -11,6 +11,8 @@ const CommonConstants = {
 
   API_APP_LOGIN_PATH: "/api/auth/google-login",
   API_APP_LOGOUT_PATH: "/api/auth/logout",
+
+  API_PRODUCT_PATH: '/api/products',
   
   COOKIE_ACCESS_TOKEN_NAME: 'accessToken',
   COOKIE_EXPIRE_AT_NAME: 'expiresAt',

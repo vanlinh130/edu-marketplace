@@ -6,15 +6,17 @@ import { Pagination, Navigation, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import data from "../../../data/data.json";
 import Link from "next/link";
 import { TiChevronLeft } from "react-icons/ti";
 import { TiChevronRight } from "react-icons/ti";
 import Image from "next/image";
+import { useProductsQuery } from "@/queries/useProducts";
 
 const SwiperSection = () => {
   const prevRef = useRef(null);
   const nextRef = useRef(null);
+
+  const { data: products } = useProductsQuery();
 
   return (
     <div className="relative">
@@ -49,8 +51,7 @@ const SwiperSection = () => {
         modules={[Pagination, Navigation, Autoplay]}
         className="mySwiper"
       >
-        {data
-          .filter((product) => product.isFree === true)
+        {products?.data.filter((product) => product.is_free === true)
           .map((product, index) => (
             <SwiperSlide
               key={index}
@@ -60,7 +61,7 @@ const SwiperSection = () => {
                 <Link href={`/san-pham/${product.slug}`}>
                   <div className="relative h-[140px] w-full">
                     <Image
-                      src={product.thumbnailUrl}
+                      src={product.thumbnail_url || ''}
                       alt=""
                       fill
                       className="object-cover rounded-t-[10px]"
