@@ -1,51 +1,56 @@
 const pool = require("../config/db");
-const generateQRCode = require("../utils/generateQRCode");
+// const generateQRCode = require("../utils/generateQRCode");
 const { createOrderItemModel } = require("../models/orderItemsModel");
 const { createOrderModel, getAll, updateStatusOrderModel, Delete, getById } = require("../models/ordersModel");
 const { createPayment } = require("../models/paymentsModel");
+const createMomoPayment = require("../utils/momoPayment");
 
 const createOrder = async (req, res) => {
   const { user_id, email, items, total_amount, payment_method  } = req.body;
-  const client = await pool.connect();
+  if (!items || !Array.isArray(items) || items.length === 0) {
+    return res.status(400).json({ error: 'items is required and must be an array' });
+  }
 
   try {
+    const client = await pool.connect();
     await client.query("BEGIN");
 
-    const order = await createOrderModel({ user_id, email, total_amount });
-    for (const item of items) {
+    const orderId = await createOrderModel({ user_id, email, total_amount });
+
+     for (const item of items) {
       await createOrderItemModel({
-        order_id: order.id,
+        order_id: orderId.id,
         product_id: item.product_id,
         quantity: item.quantity,
         price: item.price,
       });
     }
 
-    const { qrCodeUrl, rawData } = await generateQRCode(order.id, total_amount);
+    const momoRes = await createMomoPayment(orderId.id, total_amount, `Thanh toán đơn hàng ${orderId.id}`);
+
+    const qrCodeUrl = momoRes.payUrl;
 
     await createPayment({
-      order_id: order.id,
+      order_id: orderId.id,
       payment_method,
       amount: total_amount,
       qr_code_url: qrCodeUrl,
-      qr_code_raw: rawData,
+      qr_code_raw: JSON.stringify(momoRes),
     });
 
     await client.query("COMMIT");
+    client.release();
 
     res.status(201).json({
-      orderId: order.id,
+      orderId,
       total_amount,
       qrCodeUrl,
-      message: "Order created successfully, scan QR to pay",
+      message: 'Order created successfully, scan QR to pay',
     });
 
-  } catch (err) {
-    await client.query("ROLLBACK");
-    console.error(err);
-    res.status(500).json({ err: "Error creating order" });
-  } finally  {
-    client.release();
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: error.message || 'Error creating order' });
   }
 };
 
