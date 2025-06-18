@@ -1,6 +1,6 @@
 const pool = require("../config/db");
 
-const create = async ({ user_id, email, total_amount, status = "pending" }) => {
+const createOrderModel = async ({ user_id, email, total_amount, status = "pending" }) => {
   const result = await pool.query(
     `INSERT INTO orders (user_id, email, total_amount, status) 
        VALUES ($1, $2, $3, $4) RETURNING *`,
@@ -21,7 +21,7 @@ const getAll = async () => {
   return result.rows;
 };
 
-const updateStatus = async (id, status) => {
+const updateStatusOrderModel = async (id, status) => {
   const result = await pool.query(
     `UPDATE orders SET status = $1, updated_at = NOW() WHERE id = $2 RETURNING *`,
     [status, id]
@@ -38,9 +38,9 @@ const Delete = async (id) => {
 };
 
 module.exports = {
-  create,
+  createOrderModel,
   getById,
   getAll,
-  updateStatus,
+  updateStatusOrderModel,
   Delete,
 };

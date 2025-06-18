@@ -1,6 +1,6 @@
 const pool = require("../config/db");
 
-const create = async ({ order_id, product_id, quantity, price }) => {
+const createOrderItemModel = async ({ order_id, product_id, quantity, price }) => {
   const result = await pool.query(
     `INSERT INTO order_items (order_id, product_id, quantity, price)
        VALUES ($1, $2, $3, $4) RETURNING *`,
@@ -29,7 +29,7 @@ const deleteById = async (id) => {
 };
 
 module.exports = {
-  create,
+  createOrderItemModel,
   getByOrderId,
   deleteById,
 };
