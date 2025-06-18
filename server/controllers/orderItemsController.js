@@ -1,9 +1,9 @@
-const { create, getByOrderId, deleteById } = require("../models/orderItemsModel");
+const { createOrderItemModel, getByOrderId, deleteById } = require("../models/orderItemsModel");
 
 const createOrderItem = async (req, res) => {
   try {
     const { order_id, product_id, quantity, price } = req.body;
-    const newItem = await create({
+    const newItem = await createOrderItemModel({
       order_id,
       product_id,
       quantity,
