@@ -10,8 +10,16 @@ const createOrderModel = async ({ user_id, email, total_amount, status = "pendin
 };
 
 const getById = async (id) => {
-  const result = await pool.query(`SELECT * FROM orders WHERE id = $1`, [id]);
-  return result.rows[0];
+  // Lấy thông tin order
+  const orderResult = await pool.query(`SELECT * FROM orders WHERE id = $1`, [id]);
+  const order = orderResult.rows[0];
+  if (!order) return null;
+
+  // Lấy các order_items thuộc order
+  const itemsResult = await pool.query(`SELECT * FROM order_items WHERE order_id = $1`, [id]);
+  order.items = itemsResult.rows;
+
+  return order;
 };
 
 const getAll = async () => {
