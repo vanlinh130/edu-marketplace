@@ -1,7 +1,7 @@
 const pool = require("../config/db");
 
 const createTransactionSepay = async (req, res) => {
-   try {
+  try {
     const apiKey = req.headers.authorization?.replace('Apikey ', '');
     const expectedApiKey = process.env.SEPAY_API_KEY || 'YOUR_SEPAY_API_KEY';
 
@@ -14,7 +14,6 @@ const createTransactionSepay = async (req, res) => {
       gateway,
       transactionDate,
       accountNumber,
-      code,
       content,
       transferType,
       transferAmount,
@@ -26,10 +25,21 @@ const createTransactionSepay = async (req, res) => {
 
     console.log('SePay Callback received:', req.body);
 
+    // 👉 Tìm orderId từ content (vì code = null)
+    let orderId = null;
+
+    const match = content?.match(/[0-9a-f]{32}/i);
+    if (match) {
+      const raw = match[0];
+      orderId = `${raw.slice(0,8)}-${raw.slice(8,12)}-${raw.slice(12,16)}-${raw.slice(16,20)}-${raw.slice(20)}`;
+      console.log('Extracted orderId:', orderId);
+    }
+
     const client = await pool.connect();
     try {
       await client.query('BEGIN');
 
+      // 👉 Insert transaction với orderId vào trường code
       const insertQuery = `
         INSERT INTO tb_transactions 
         (gateway, transaction_date, account_number, code, content, transfer_type, transfer_amount, accumulated, sub_account, reference_code, description)
@@ -40,7 +50,7 @@ const createTransactionSepay = async (req, res) => {
         gateway,
         transactionDate,
         accountNumber,
-        code,
+        orderId,           // <----- Gán orderId vào code
         content,
         transferType,
         transferAmount,
@@ -50,15 +60,7 @@ const createTransactionSepay = async (req, res) => {
         description,
       ]);
 
-      let orderId = code;
-
-      if (!orderId && content) {
-        const match = content.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/i);
-        if (match) {
-          orderId = match[0];
-        }
-      }
-
+      // 👉 Nếu tìm thấy orderId → cập nhật đơn hàng
       if (orderId) {
         const findOrderQuery = 'SELECT * FROM orders WHERE id = $1 LIMIT 1';
         const orderResult = await client.query(findOrderQuery, [orderId]);
@@ -73,7 +75,12 @@ const createTransactionSepay = async (req, res) => {
               WHERE id = $1
             `;
             await client.query(updateOrderQuery, [orderId]);
+            console.log('Order updated to completed:', orderId);
+          } else {
+            console.log('Transfer amount insufficient for order:', orderId);
           }
+        } else {
+          console.log('Order not found:', orderId);
         }
       }
 
@@ -91,6 +98,7 @@ const createTransactionSepay = async (req, res) => {
     return res.status(500).json({ success: false, message: 'Internal server error', error: error.message });
   }
 };
+
 
 module.exports = {
   createTransactionSepay,
