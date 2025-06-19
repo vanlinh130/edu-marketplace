@@ -55,7 +55,7 @@ const createOrder = async (req, res) => {
 };
 
 const createOrders = async (req, res) => {
-  const { user_id, email, items, total_amount, payment_method } = req.body;
+  const { user_id, email, items, total_amount } = req.body;
   if (!items || !Array.isArray(items) || items.length === 0) {
     return res.status(400).json({ error: "items is required and must be an array" });
   }
@@ -67,6 +67,7 @@ const createOrders = async (req, res) => {
     // 1️⃣ Tạo đơn hàng trong DB
     const orderId = await createOrderModel({ user_id, email, total_amount });
 
+    // 2️⃣ Thêm từng item vào bảng order_items
     for (const item of items) {
       await createOrderItemModel({
         order_id: orderId.id,
@@ -76,52 +77,13 @@ const createOrders = async (req, res) => {
       });
     }
 
-    // 2️⃣ Gọi API SePay → sinh QR hoặc link thanh toán
-    const axios = require("axios");
-    const payload = {
-      orderCode: orderId.id, // chính là id đơn hàng UUID
-      amount: total_amount,
-      description: `Thanh toán đơn hàng ${orderId.id}`,
-      returnUrl: "https://yourfrontend.com/payment-success",
-      cancelUrl: "https://yourfrontend.com/payment-cancel",
-      // Thêm các trường khác nếu API SePay yêu cầu
-    };
-
-    const response = await axios.post(process.env.SEPAY_API_URL, payload, {
-      headers: {
-        Authorization: `Bearer ${process.env.SEPAY_API_TOKEN}`,
-        "Content-Type": "application/json",
-      },
-    });
-
-    const data = response.data;
-
-    if (data.code !== 200) {
-      await client.query("ROLLBACK");
-      return res.status(400).json({ error: data.message || "SePay API Error" });
-    }
-
-    const qrCodeUrl = data.data?.payUrl || null;
-    const transactionId = data.data?.transactionId || null;
-
-    // 3️⃣ Lưu vào bảng payments
-    await createPayment({
-      order_id: orderId.id,
-      payment_method,
-      amount: total_amount,
-      qr_code_url: qrCodeUrl,
-      qr_code_raw: JSON.stringify(data),
-      provider_transaction_id: transactionId,
-    });
-
     await client.query("COMMIT");
     client.release();
 
     return res.status(201).json({
       orderId,
       total_amount,
-      qrCodeUrl,
-      message: "Order created successfully, scan QR to pay",
+      message: "Order created successfully",
     });
   } catch (error) {
     await client.query("ROLLBACK");
