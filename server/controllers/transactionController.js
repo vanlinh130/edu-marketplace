@@ -53,9 +53,9 @@ const createTransactionSepay = async (req, res) => {
       let orderId = code;
 
       if (!orderId && content) {
-        const match = content.match(/ORDER[_\s]?([a-zA-Z0-9\-]+)/i);
+        const match = content.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/i);
         if (match) {
-          orderId = match[1];
+          orderId = match[0];
         }
       }
 
